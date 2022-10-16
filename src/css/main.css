@@ -41,12 +41,14 @@ header p {
 }
 
 .content .top-news-section {
-  width: 75%;
+  /* 초기 너비 지정, 아래 미디어 쿼리에서는 flex-direction이 column으로 변경되기 때문에 높이를 기준으로 계산하게 됨 */
+  /* Tip! flex-container 내에서는 flex-basis가 width, height 프로퍼티보다 우선시 -> 너비/높이 고정히 flex-basis 사용 권장 */
+  flex-basis: 75%;
   padding: 10px;
 }
 
 .content aside {
-  width: 25%;
+  flex-basis: 25%;
   margin: 10px;
   padding: 20px;
   border-left: 1px solid #5a6268;
@@ -111,4 +113,55 @@ footer {
 
 .latest-secton .latest-news-item:hover {
   color: #add8e6;
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .content aside {
+    margin: 0;
+    border-left: none;
+    border-bottom: 1px solid #5a6268;
+  }
+
+  .thumbnail-area {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  header {
+    padding-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  header p {
+    font-size: 20px;
+  }
+
+  .content {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .content .top-news-section h2 {
+    font-size: 20px;
+  }
+
+  .news {
+    min-height: 150px;
+  }
+
+  .information .title {
+    font-size: 16px;
+  }
+
+  .information .description {
+    font-size: 13px;
+  }
 }
